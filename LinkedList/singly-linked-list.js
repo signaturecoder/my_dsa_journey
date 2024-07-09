@@ -199,6 +199,32 @@ class SinglyLinkedList {
             current = current.next;
         }
         console.log(str);
+        console.log(this);
+    }
+
+    sumOfNode() {
+        let sum = 0;
+        let current = this.head.next;
+        let prev = this.head;
+        while(current){
+
+            if(current.val) {
+                sum += current.val;
+            } else {
+              let node = new Node(sum);
+              prev.next = node;
+              prev = prev.next;
+            }
+            // this.length--;
+            current = current.next;
+        }
+        console.log("Sum ", sum);
+        console.log("head", this.head.next);
+        return this.head.next;
+        // after summation you need to delete the existing node 
+        // and create another node whose val is sum of all the previous node
+        
+
     }
 
 
@@ -206,10 +232,13 @@ class SinglyLinkedList {
 
 let list = new SinglyLinkedList();
 
+list.push(0)
 list.push(4);
 list.push(6);
+list.push(0);
 list.push(9);
 list.push(12);
+list.push(0);
 // list.pop();
 // list.pop();
 // list.pop();
@@ -220,6 +249,8 @@ list.push(12);
 
 // console.log(list.shift());
 list.print();
+list.sumOfNode();
+list.print();
 // console.log(list.get(0));
 // list.unshift(42);
 // console.log(list.get(0));
@@ -229,8 +260,8 @@ list.print();
 // list.print();
 
 // console.log(list.removeNode(3));
-list.reverse();
-list.print();
+// list.reverse();
+// list.print();
 
 
 
