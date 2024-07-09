@@ -6,6 +6,8 @@
  * 
  * Time : O(n)
  */
+
+/*
 var averageWaitingTime = function(customers) {
     const noOfCustomers = customers.length;
     let avgTime = 0;
@@ -21,6 +23,22 @@ var averageWaitingTime = function(customers) {
     return avgTime/noOfCustomers;
 };
 
-const customers = [[1,2],[2,5],[4,3]];
-// const customers = [[5,2],[5,4],[10,3],[20,1]];
+*/
+
+// Current Time: Whichever is greater between currenttime and arrival + duration
+var averageWaitingTime = function(customers) {
+    const noOfCustomers = customers.length;
+    let avgTime = 0;
+    let currentTime = 0;
+
+    for(let i = 0; i < noOfCustomers; i++) {
+        const [arrival, duration] = customers[i];
+        currentTime = Math.max(currentTime, arrival) + duration;
+        avgTime += currentTime - arrival;
+    }
+    return avgTime/noOfCustomers;
+};
+
+// const customers = [[1,2],[2,5],[4,3]];
+const customers = [[5,2],[5,4],[10,3],[20,1]];
 console.log(averageWaitingTime(customers)); //
